@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --very-light-gray: #F5F6FA;
+    --light-grayish-blue: #C5C6EF;
+    --moderate-blue: #5357B6;
+    --dark-blue: #334253;
+    --grayish-blue: #67727E;
+    --soft-red: #ED6368;
+    --pale-red: #FFB8BB;
+
+
+    --fs-heading-l: 57px;
+    --fs-heading-m: 16px;
+    --fs-body-l: 24px;
+    --fs-body-m: 16px;
+    --fs-body-s: 13px;
+}
+
+body {
+    font-family: 'Rubik';
+    background-color: var(--very-light-gray);
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.fs-body-m {
+    font-size: var(--fs-body-m);
+}
+
+.text-moderate-blue {
+    color: var(--moderate-blue);
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.text-red {
+    color: var(--soft-red);
+}

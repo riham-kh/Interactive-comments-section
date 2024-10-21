@@ -1,0 +1,19 @@
+.comments-wrapper {
+    max-width: 730px;
+    margin: 64px auto;
+}
+
+.replies {
+    padding-left: 88px;
+    position: relative;
+}
+
+.replies::before {
+    content: '';
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 43px;
+    width: 2px;
+    background: #E9EBF0;
+}

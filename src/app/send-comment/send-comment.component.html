@@ -1,0 +1,8 @@
+<div class="create-comment">
+    <div class="create-comment__user">
+        <img src={{currentUser.image.png}} alt={{currentUser.username}} />
+    </div>
+    <textarea class="create-comment__textarea" [(ngModel)]="comment" name="reply" id="reply" name="commentContent"
+        placeholder="Add a comment..." id="commentContent"></textarea>
+    <button class="send-btn" (click)="handleSendComment()">SEND</button>
+</div>
