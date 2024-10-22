@@ -1,0 +1,76 @@
+.modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000060;
+
+    &__content {
+        border-radius: 8px;
+        background-color: white;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 400px;
+    }
+
+    &__title {
+        font-size: var(--fs-heading-l);
+        color: var(--dark-blue);
+        font-weight: bold;
+    }
+
+    &__description {
+        font-size: var(--fs-body-m);
+        color: var(--grayish-blue);
+    }
+
+    &__actions {
+        width: 100%;
+        display: flex;
+        gap: 14px;
+        justify-content: space-between;
+    }
+}
+
+.modal-open {
+    display: block;
+}
+
+.modal-close {
+    display: none;
+}
+
+
+.btn {
+    line-height: 150%;
+    color: white;
+    font-weight: 600;
+    border: none;
+    outline: unset;
+    font-size: var(--fs-body-m);
+    border-radius: 8px;
+    flex: 1;
+    height: 48px;
+}
+
+.btn-delete {
+    background-color: var(--soft-red);
+}
+
+.btn-delete:hover {
+    background-color: #ED636899;
+}
+
+.btn-cancel {
+    background-color: var(--grayish-blue);
+}
+
+.btn-cancel:hover {
+    background-color: #67727E99;
+}

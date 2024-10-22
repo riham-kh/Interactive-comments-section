@@ -28,19 +28,36 @@
         }
         @else {
         <div class="btn-edit-delete">
-          <a class="btn-delete text-red">
+          <a class="btn-delete text-red" (click)="showConfirmationModal()">
             <i class="fa-solid fa-trash"></i> Delete</a>
-          <a class="btn-edit text-moderate-blue">
+          <a class="btn-edit text-moderate-blue" (click)="editComment()">
             <i class="fa-solid fa-pen"></i> Edit</a>
         </div>
         }
       </div>
     </div>
 
+    @if (!onEditMode){
     <div class="comment__message">
       <p>
         {{comment.content}}
       </p>
     </div>
+    }
+    @else {
+    <div class="reply__form">
+      <textarea placeholder="Add a comment..." class="reply__textarea" [(ngModel)]="editedComment" name="reply"
+        id="reply"></textarea>
+    </div>
+    <div class="update__btns">
+      <button class="btn btn-cancel" (click)="onCancel()">Cancel</button>
+      <button class="btn btn-update" (click)="onEditComment()">Update</button>
+    </div>
+    }
+
   </div>
 </div>
+
+@if (showDeleteConfirmation) {
+<app-modal (closeModal)="shouldHideModal($event)" (deleteComment)="shouldDelete($event)"></app-modal>
+}

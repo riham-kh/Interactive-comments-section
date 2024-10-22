@@ -14,7 +14,7 @@ export class CommentsService {
   private commentsStorageName = "comments";
   private userStorageName = "user";
 
-  private comments: Comment[];
+  private comments: Comment[] | Reply[];
   private currentUser: User;
 
   constructor() {
@@ -34,8 +34,20 @@ export class CommentsService {
     return this.comments;
   }
 
-  createComment(comment: Comment) {
+  createComment(comment: any) {
     this.comments.push(comment);
+    this.updateStorage();
+  }
+
+  updateComment(newComment: any) {
+    let commentId = this.findCommentIndex(newComment);
+    this.comments[commentId] = newComment;
+    this.updateStorage();
+  }
+
+  deleteComment(comment: Comment) {
+    let commentId = this.findCommentIndex(comment);
+    this.comments.splice(commentId, 1);
     this.updateStorage();
   }
 
@@ -45,5 +57,9 @@ export class CommentsService {
       localStorage.setItem(this.commentsStorageName, JSON.stringify(this.comments))
     }
     return this.getComments();
+  }
+
+  private findCommentIndex(comment: any) {
+    return this.comments.indexOf(comment);
   }
 }

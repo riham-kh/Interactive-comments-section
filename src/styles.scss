@@ -9,7 +9,7 @@
     --pale-red: #FFB8BB;
 
 
-    --fs-heading-l: 57px;
+    --fs-heading-l: 24px;
     --fs-heading-m: 16px;
     --fs-body-l: 24px;
     --fs-body-m: 16px;
@@ -42,4 +42,9 @@ body {
 
 .text-red {
     color: var(--soft-red);
+}
+
+button,
+a {
+    cursor: pointer;
 }

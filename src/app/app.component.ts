@@ -7,12 +7,13 @@ import { Reply } from './models/reply';
 import { User } from './models/user';
 import { SendCommentComponent } from './send-comment/send-comment.component';
 import { FormsModule } from '@angular/forms';
+import { ModalComponent } from './modal/modal.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommentComponent, SendCommentComponent, FormsModule],
+  imports: [RouterOutlet, CommentComponent, SendCommentComponent, FormsModule, ModalComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [CommentsService]

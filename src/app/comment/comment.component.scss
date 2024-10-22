@@ -93,3 +93,49 @@
     align-items: center;
     gap: 8px;
 }
+
+.reply__textarea {
+    border: 1px solid #E9EBF0;
+    font-size: var(--fs-body-m);
+    color: var(--grayish-blue);
+    line-height: 150%;
+    padding-left: 24px;
+    border-radius: 8px;
+    padding-top: 12px;
+    min-height: 96px;
+    width: 100%;
+    font-family: 'Rubik';
+}
+
+.update__btns {
+    display: flex;
+    gap: 14px;
+    margin-left: auto;
+}
+
+.btn {
+    padding: 12px 30px;
+    line-height: 150%;
+    color: white;
+    font-weight: 600;
+    border: none;
+    outline: unset;
+    font-size: var(--fs-body-m);
+    border-radius: 8px;
+}
+
+.btn-update {
+    background-color: var(--moderate-blue);
+}
+
+.btn-update:hover {
+    background-color: #5357B699;
+}
+
+.btn-cancel {
+    background-color: var(--soft-red);
+}
+
+.btn-cancel:hover {
+    background-color: #ED636899;
+}
