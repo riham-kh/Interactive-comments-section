@@ -45,7 +45,6 @@ export class AppComponent implements OnInit {
   }
 
   addComment(comment: any) {
-    console.log(comment)
     this.commentService.createComment(comment.comment, comment?.id);
   }
 

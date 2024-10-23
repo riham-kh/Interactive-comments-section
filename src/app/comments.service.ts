@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import * as commentsData from '../assets/data/data.json';
-import { Comment } from './models/comment';
-import { Reply } from './models/reply';
 import { User } from './models/user';
 
 
@@ -53,9 +51,21 @@ export class CommentsService {
     this.updateStorage();
   }
 
-  deleteComment(comment: Comment) {
-    let commentId = this.findCommentIndex(comment);
-    this.comments.splice(commentId, 1);
+  deleteComment(comment: any) {
+
+    if (comment.replyingTo) {
+      let mainComment = this.findComment(comment.parentId);
+      let commentIndex = this.findCommentIndex(mainComment);
+      let commentRepliesArr = this.comments[commentIndex].replies;
+      commentRepliesArr.splice(commentIndex, 1);
+
+      this.comments[commentIndex].replies = commentRepliesArr;
+    } else {
+      let commentId = this.findCommentIndex(comment);
+      this.comments.splice(commentId, 1);
+    }
+
+
     this.updateStorage();
   }
 
