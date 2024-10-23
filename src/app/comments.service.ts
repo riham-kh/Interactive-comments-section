@@ -14,7 +14,7 @@ export class CommentsService {
   private commentsStorageName = "comments";
   private userStorageName = "user";
 
-  private comments: Comment[] | Reply[];
+  private comments: any[];
   private currentUser: User;
 
   constructor() {
@@ -34,8 +34,16 @@ export class CommentsService {
     return this.comments;
   }
 
-  createComment(comment: any) {
-    this.comments.push(comment);
+  createComment(newComment: any, id?: any) {
+    if (id) {
+      let comment = this.findComment(id);
+      let commentIndex = this.findCommentIndex(comment);
+      this.comments[commentIndex].replies.push(newComment);
+
+    } else {
+      this.comments.push(newComment);
+    }
+
     this.updateStorage();
   }
 
@@ -51,6 +59,7 @@ export class CommentsService {
     this.updateStorage();
   }
 
+
   // update storage after operation
   private updateStorage() {
     if (typeof window !== 'undefined' && localStorage) {
@@ -61,5 +70,9 @@ export class CommentsService {
 
   private findCommentIndex(comment: any) {
     return this.comments.indexOf(comment);
+  }
+
+  private findComment(id: any) {
+    return this.comments.filter(comment => { return comment.id === id })[0];
   }
 }

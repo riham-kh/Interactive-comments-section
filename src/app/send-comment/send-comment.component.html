@@ -4,5 +4,12 @@
     </div>
     <textarea class="create-comment__textarea" [(ngModel)]="comment" name="reply" id="reply" name="commentContent"
         placeholder="Add a comment..." id="commentContent"></textarea>
+
+    @if (!replyingTo){
     <button class="send-btn" (click)="handleSendComment()">SEND</button>
+    }
+
+    @else {
+    <button class="send-btn" (click)="handleSendReply()">SEND</button>
+    }
 </div>

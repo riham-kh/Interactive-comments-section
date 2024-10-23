@@ -1,13 +1,13 @@
 <div class="comments-wrapper">
     @for (comment of comments; track comment.id) {
-    <app-comment [currentUser]="currentUser" [comment]="comment"></app-comment>
+    <app-comment (reply)="showReplyForm($event)" [currentUser]="currentUser" [comment]="comment"></app-comment>
 
     <div class="replies">
         @for (reply of comment.replies; track reply.id) {
-        <app-comment [currentUser]="currentUser" [comment]="reply"></app-comment>
+        <app-comment (reply)="showReplyForm($event)" [currentUser]="currentUser" [comment]="reply"></app-comment>
         }
     </div>
     }
 
-    <app-send-comment (add)="addComment($event)" [currentUser]="currentUser"></app-send-comment>
+    <app-send-comment [currentUser]="currentUser"></app-send-comment>
 </div>

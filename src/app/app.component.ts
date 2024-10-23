@@ -24,6 +24,8 @@ export class AppComponent implements OnInit {
   comments: Comment[];
   currentUser: User;
 
+  displayReplyForm = false;
+
   constructor(private commentService: CommentsService) { }
 
   ngOnInit(): void {
@@ -42,8 +44,15 @@ export class AppComponent implements OnInit {
     this.currentUser = this.commentService.getUser();
   }
 
-  addComment(comment: Comment) {
-    this.commentService.createComment(comment);
+  addComment(comment: any) {
+    console.log(comment)
+    this.commentService.createComment(comment.comment, comment?.id);
+  }
+
+  showReplyForm(response: number) {
+    if (response == 1) {
+      this.displayReplyForm = true;
+    }
   }
 
 }

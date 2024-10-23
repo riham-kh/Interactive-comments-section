@@ -21,7 +21,7 @@
 
       <div class="comment__actions">
         @if (comment.user.username !== currentUser.username) {
-        <a class="btn-reply text-moderate-blue">
+        <a class="btn-reply text-moderate-blue" (click)="onReply()">
           <i class="fa-solid fa-reply"></i>
           <span>Reply</span>
         </a>
@@ -57,6 +57,10 @@
 
   </div>
 </div>
+
+@if (showReplyForm) {
+<app-send-comment [currentUser]="currentUser" [replyingTo]="comment"></app-send-comment>
+}
 
 @if (showDeleteConfirmation) {
 <app-modal (closeModal)="shouldHideModal($event)" (deleteComment)="shouldDelete($event)"></app-modal>

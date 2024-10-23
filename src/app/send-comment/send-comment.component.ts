@@ -3,6 +3,7 @@ import { User } from '../models/user';
 import { Comment } from '../models/comment';
 import { CommentsService } from '../comments.service';
 import { FormsModule } from '@angular/forms';
+import { Reply } from '../models/reply';
 
 @Component({
   selector: 'app-send-comment',
@@ -13,11 +14,14 @@ import { FormsModule } from '@angular/forms';
 })
 export class SendCommentComponent implements OnInit {
   @Input() currentUser: User;
-  @Output() add = new EventEmitter<Comment>();
+  @Input() replyingTo: any;
 
   comment: string;
 
   ngOnInit(): void {
+    if (this.replyingTo) {
+      this.comment = `@${this.replyingTo.user.username} `;
+    }
   }
 
   constructor(private commentService: CommentsService) { }
@@ -40,11 +44,38 @@ export class SendCommentComponent implements OnInit {
     this.addComment(newComment);
   }
 
-  addComment(newComment: Comment) {
-    // this.commentService.createComment(newComment);
-    this.add.emit(newComment)
-    this.comment = '';
+  handleSendReply() {
+
+    if (this.comment === "" || this.comment == undefined) {
+      return;
+    }
+
+    if (this.replyingTo) {
+      let comment_id = this.replyingTo.comment_id ? this.replyingTo.comment_id : this.replyingTo.id;
+
+      let newReply: Reply =
+      {
+        id: Number(Date.now()),
+        parentId: comment_id,
+        content: this.comment,
+        createdAt: new Date().toString(),
+        score: 0,
+        replyingTo: this.replyingTo.user.username,
+        user: this.currentUser
+      }
+
+      this.addComment(newReply, comment_id);
+    }
+
   }
+
+  addComment(newComment: Comment, comment_id?: any) {
+    this.commentService.createComment(newComment, comment_id)
+    this.comment = ''; //reset comment value
+  }
+
+
+
 
 
 }
