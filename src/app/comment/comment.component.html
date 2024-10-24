@@ -1,11 +1,11 @@
 <div class="comment">
 
   <div class="comment__vote">
-    <a class="upvote">
+    <a class="upvote" (click)="onVote('up')">
       <i class="fa-solid fa-plus"></i>
     </a>
-    <p class="text-moderate-blue fs-body-m m-0">{{comment.score}}</p>
-    <a class="downvote">
+    <p class="text-moderate-blue fs-body-m m-0">{{vote.score}}</p>
+    <a class="downvote" (click)="onVote('down')">
       <i class="fa-solid fa-minus"></i>
     </a>
   </div>

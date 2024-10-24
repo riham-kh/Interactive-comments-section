@@ -28,10 +28,14 @@ export class CommentComponent implements OnInit {
   editedComment = '';
   shouldDeleteComment = false;
   showReplyForm = false;
+  voter: any;
+  voterIndex: any;
+  vote: any;
   constructor(private commentService: CommentsService) { }
 
   ngOnInit(): void {
     this.editedComment = this.comment.content;
+    this.vote = this.comment.vote;
   }
 
   editComment() {
@@ -69,7 +73,56 @@ export class CommentComponent implements OnInit {
     this.showReplyForm = true;
   }
 
+  onVote(type: 'up' | 'down') {
+    this.findVoter(this.currentUser.username);
 
+    const isUpVote = type === 'up';
+    const alreadyVoted = isUpVote ? this.voter?.up : this.voter?.down;
+
+    if (alreadyVoted) {
+      return;
+    }
+
+    this.countVote(type);
+
+    if (!this.voter) {
+      this.vote.voters.push(this.voter);
+    } else {
+      this.vote.voters[this.voterIndex] = this.voter;
+    }
+
+    this.comment.vote = this.vote;
+
+    this.commentService.updateComment(this.comment);
+
+  }
+
+
+  private countVote(voteType: 'up' | 'down') {
+    if (voteType === 'up') {
+      this.vote.score++;
+      this.voter = {
+        name: this.currentUser.username,
+        up: true,
+        down: false,
+      };
+    } else {
+      this.vote.score--;
+      this.voter = {
+        name: this.currentUser.username,
+        up: false,
+        down: true,
+      };
+    }
+  }
+
+
+
+  private findVoter(name: string) {
+    let commentVoters = this.comment.vote.voters;
+    this.voterIndex = commentVoters?.findIndex(voter => voter.name === name);
+    this.voter = commentVoters ? commentVoters[this.voterIndex] : null;
+  }
 
 
 }

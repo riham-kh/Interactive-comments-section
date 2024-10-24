@@ -36,7 +36,7 @@ export class SendCommentComponent implements OnInit {
       id: Number(Date.now()),
       content: this.comment,
       createdAt: new Date().toString(),
-      score: 0,
+      vote: { score: 0, voters: [] },
       user: this.currentUser,
       replies: []
     }
@@ -59,7 +59,7 @@ export class SendCommentComponent implements OnInit {
         parentId: comment_id,
         content: this.comment,
         createdAt: new Date().toString(),
-        score: 0,
+        vote: { score: 0, voters: [] },
         replyingTo: this.replyingTo.user.username,
         user: this.currentUser
       }
