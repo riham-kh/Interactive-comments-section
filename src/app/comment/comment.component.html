@@ -1,6 +1,6 @@
 <div class="comment">
 
-  <div class="comment__vote">
+  <div class="comment__vote desktop">
     <a class="upvote" (click)="onVote('up')">
       <i class="fa-solid fa-plus"></i>
     </a>
@@ -19,7 +19,7 @@
       <p class="comment__period">{{comment.createdAt | toAgo}}</p>
 
 
-      <div class="comment__actions">
+      <div class="comment__actions desktop">
         @if (comment.user.username !== currentUser.username) {
         <a class="btn-reply text-moderate-blue" (click)="onReply()">
           <i class="fa-solid fa-reply"></i>
@@ -55,6 +55,38 @@
     </div>
     }
 
+  </div>
+
+
+  <div class="comment__mobile-actions mobile">
+    <div class="comment__vote mobile">
+      <a class="upvote" (click)="onVote('up')">
+        <i class="fa-solid fa-plus"></i>
+      </a>
+      <p class="text-moderate-blue fs-body-m m-0">{{vote.score}}</p>
+      <a class="downvote" (click)="onVote('down')">
+        <i class="fa-solid fa-minus"></i>
+      </a>
+    </div>
+
+
+    <div class="comment__actions mobile">
+      @if (comment.user.username !== currentUser.username) {
+      <a class="btn-reply text-moderate-blue" (click)="onReply()">
+        <i class="fa-solid fa-reply"></i>
+        <span>Reply</span>
+      </a>
+      }
+      @else {
+      <div class="btn-edit-delete">
+        <a class="btn-delete text-red" (click)="showConfirmationModal()">
+          <i class="fa-solid fa-trash"></i> Delete</a>
+        <a class="btn-edit text-moderate-blue" (click)="editComment()">
+          <i class="fa-solid fa-pen"></i> Edit</a>
+      </div>
+      }
+
+    </div>
   </div>
 </div>
 

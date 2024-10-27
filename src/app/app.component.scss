@@ -17,3 +17,24 @@
     width: 2px;
     background: #E9EBF0;
 }
+
+@media screen and (max-width: 760px) {
+    .comments-wrapper {
+        padding: 12px 16px;
+        margin: unset;
+    }
+
+    .replies {
+        padding-left: 18px;
+    }
+
+    .replies::before {
+        content: '';
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2px;
+        background: #E9EBF0;
+    }
+}

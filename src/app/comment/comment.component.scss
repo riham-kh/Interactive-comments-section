@@ -94,6 +94,12 @@
     gap: 8px;
 }
 
+.btn-reply:hover,
+.btn-edit:hover,
+.btn-delete:hover {
+    opacity: 0.6;
+}
+
 .reply__textarea {
     border: 1px solid #E9EBF0;
     font-size: var(--fs-body-m);
@@ -138,4 +144,63 @@
 
 .btn-cancel:hover {
     background-color: #ED636899;
+}
+
+.mobile {
+    display: none;
+}
+
+@media only screen and (max-width: 760px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: flex;
+    }
+
+    .comment__vote {
+        flex-direction: row;
+        padding: 10px 10px;
+        gap: 16px;
+
+        a {
+            display: flex;
+
+            i {
+                margin: auto;
+            }
+        }
+    }
+
+    .comment {
+        gap: 16px;
+        padding: 16px;
+        flex-direction: column;
+
+        &__mobile-actions {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &__image {
+            margin-right: 16px;
+        }
+
+        &__you {
+            margin-left: 8px;
+            margin-right: 0px;
+        }
+
+        &__user {
+            margin-right: 0px;
+        }
+
+        &__period {
+            margin-left: 16px;
+        }
+    }
+
+
 }

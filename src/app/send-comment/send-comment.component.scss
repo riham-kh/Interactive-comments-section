@@ -42,3 +42,43 @@
         background-color: #5357B699;
     }
 }
+
+.mobile {
+    display: none;
+}
+
+
+@media only screen and (max-width: 760px) {
+    .create-comment {
+        padding: 16px;
+        width: 100%;
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: flex;
+    }
+
+    .d-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .create-comment {
+        flex-direction: column;
+    }
+
+    .create-comment__user img {
+        width: 32px;
+        height: 32px;
+    }
+
+}
