@@ -1,7 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Comment } from '../models/comment';
 import { User } from '../models/user';
-import { Reply } from '../models/reply';
 import { ToAgoPipe } from '../Helpers/Pipes/to-ago.pipe';
 import { CommentsService } from '../comments.service';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +18,7 @@ export class CommentComponent implements OnInit {
   onEditMode = false;
   showDeleteConfirmation = false;
 
-  @Input() comment: Comment | Reply;
+  @Input() comment: any;
   @Input() currentUser: User;
 
   @Output() reply: EventEmitter<any> = new EventEmitter();
@@ -120,7 +118,7 @@ export class CommentComponent implements OnInit {
 
   private findVoter(name: string) {
     let commentVoters = this.comment.vote.voters;
-    this.voterIndex = commentVoters?.findIndex(voter => voter.name === name);
+    this.voterIndex = commentVoters?.findIndex((voter: any) => voter.name === name);
     this.voter = commentVoters ? commentVoters[this.voterIndex] : null;
   }
 

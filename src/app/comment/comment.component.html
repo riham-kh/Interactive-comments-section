@@ -39,10 +39,8 @@
 
     @if (!onEditMode){
     <div class="comment__message">
-      <p>
-        {{comment.content}}
-      </p>
-    </div>
+      @if (comment.replyingTo){ <span class="text-blue">&#64;{{ comment.replyingTo }}</span> }
+      {{comment.content}} </div>
     }
     @else {
     <div class="reply__form">

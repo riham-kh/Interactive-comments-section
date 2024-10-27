@@ -52,12 +52,12 @@ export class SendCommentComponent implements OnInit {
 
     if (this.replyingTo) {
       let comment_id = this.replyingTo.comment_id ? this.replyingTo.comment_id : this.replyingTo.id;
-
+      let content = this.comment.replace(`@${this.replyingTo.user.username} `, '')
       let newReply: Reply =
       {
         id: Number(Date.now()),
         parentId: comment_id,
-        content: this.comment,
+        content: content,
         createdAt: new Date().toString(),
         vote: { score: 0, voters: [] },
         replyingTo: this.replyingTo.user.username,
